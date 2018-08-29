@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="placementlink@localhost" uuid="0b24260e-dcfd-4218-9cb9-bf4dc7f81fb5">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <secret-storage>master_key</secret-storage>
+      <first-sync>true</first-sync>
+      <user-name>admin</user-name>
+    </data-source>
+  </component>
+</project>

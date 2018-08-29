@@ -1,0 +1,157 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <header class="header">
+        <ul class="nav pull-left left-nav">
+            <li><a href="findStudent.php">find students</a></li>
+        </ul>
+        <div class="dropdown pull-right"><?php if(isset($_SESSION['user_id'])){?>
+            <a class="btn dropdown-toggle" type="button" id="menu1" data-toggle="dropdown"><?php if(isset($_SESSION["name"])) echo $_SESSION["name"]?>
+                <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="profile.php">My Profile</a></li>
+                <li><a href="details.php">Update Details</a></li>
+                <?php if($_SESSION['userType'] ==1){?>
+                <li><a href="placements.php">My Ads</a></li>
+                <li><a href="myad.php">Manage Ads</a></li>
+                <?php }?>
+                <li role="separator" class="divider"></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+            <?php  }else{ ?>
+            <a class="btn dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Login
+                <span class="caret"></span></a>
+            <div class="dropdown-menu login-dropdown">
+                <form role="form" method="post" action="login.php">
+                    <fieldset>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                            </label>
+                        </div>
+                        <input type="submit" id="submit-button" name="login" class="btn btn-sm btn-primary btn-lg btn-block" value="Login">
+                    </fieldset>
+                </form>
+                <hr/>
+                <button class="btn btn-sm btn-secondary btn-lg btn-block">Register</button>
+            </div>
+            <?php }?>
+        </div>
+    </header>
+    <div class="{{ 'bg' }}" id="background">&nbsp;</div>
+
+    <div style="text-align:center">
+        <div style="margin-left: auto;margin-right: auto;padding-top:200px">
+            <h1 style="color: white;font-size: 50px;height: 70px">PlacementLink</h1>
+            <div style="
+            width:70%;
+            height: 140px;
+            background: rgba(0, 0, 0, 0.7);
+            margin: auto;
+            border: solid thin silver;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            color:white;
+            display: table;
+            vertical-align: middle;
+
+             ">
+                <div style="display: table-cell;opacity: 1;
+        vertical-align: middle;">
+                    <form action="searchPlacement.php" method="get">
+                        <input class="index-search" name="searchBox" type="text" placeholder="placement" />
+                        <select class="filterTool" name="location">
+                            <option value="">Any location </option>
+                            <option value="South East">South East</option>
+                            <option value="South West">South West </option>
+                            <option value="London">London</option>
+                            <option value="East England">East Of England </option>
+                            <option value="West Midlands">West Midlands </option>
+                            <option value="East Midlands">East Midlands </option>
+                            <option value="Yorkshire">Yorkshire and the Humber </option>
+                            <option value="North West">North West</option>
+                            <option value="North East">North East</option>
+                        </select>
+                        <input type="submit" class="btn btn-primary" name="searchPlacement" value="search">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="copyright" style="position: fixed;bottom: 0; width:100%">
+        <div class="container">
+            <div class="col-md-6">
+                <p>© 2017 - All Rights with Placementlink</p>
+            </div>
+            <div class="col-md-6">
+                <ul class="bottom_ul">
+                    <li><a href="index.php">placementlink.com</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Faq's</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Site Map</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {#<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">#}
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/font-awesome.min.css') }}">
+
+    <style>
+        body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
+        h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
+        h1 { font-size: 36px; }
+        h2 { font-size: 21px; margin-bottom: 1em; }
+        p { margin: 0 0 1em 0; }
+        a { color: #0000F0; }
+        a:hover { text-decoration: none; }
+        code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
+        #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
+        #container { padding: 2em; }
+        #welcome, #status { margin-bottom: 2em; }
+        #welcome h1 span { display: block; font-size: 75%; }
+        #icon-status, #icon-book { float: left; height: 64px; margin-right: 1em; margin-top: -4px; width: 64px; }
+        #icon-book { display: none; }
+
+        @media (min-width: 768px) {
+            #wrapper { width: 80%; margin: 2em auto; }
+            #icon-book { display: inline-block; }
+            #status a, #next a { display: block; }
+
+            @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+            @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+            .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
+        }
+    </style>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/footer2.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="/css/my-style.css" rel="stylesheet">
+
+
+
+{% endblock %}
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/forms.js"></script>
+    <script src="js/bootstrap.js"></script>
+{% endblock %}

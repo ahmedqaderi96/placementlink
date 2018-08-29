@@ -1,0 +1,277 @@
+#title {
+    margin-top: 12px;
+    background-color: #fff;
+    color: #000;
+}
+#profileInfo{
+    border:solid thin silver;
+}
+.bluelink{
+    color:#2d6ca2;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+.login-dropdown{
+    padding:10px;
+    text-align: center;
+}
+.filterTool{
+    color: black;
+}
+.bold{
+    font-weight: bold;
+}
+#container{
+    overflow: auto;
+}
+.search-link{
+    font-weight: bold;
+    font-size: 13px;
+    font-weight: bold;
+    font-family: arial, sans-serif;
+    text-decoration: none;
+    color: #0000cc;
+    line-height: normal;
+}
+.ACUR:hover{
+    background-color: blue;
+    color: white;
+}
+.full{
+    width: 100% !important;
+}
+
+#profileWrapper{
+    border: solid thin silver;
+}
+.skillsList{
+    background-color: #e9ebee;
+    border:solid thin silver;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    margin-bottom: 10px;
+    overflow: auto;
+    padding: 2.5px;
+}
+.theSkill{
+    background-color: white;
+    border:solid thin silver;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    float: left;
+    margin: 2.5px;
+    padding: 2px;
+}
+#userPicDiv {
+    width: 200px;
+    float: left;
+}
+#profile-pic{
+    width:100%;
+    height: auto;
+ }
+#uploadPhotoButton{
+    width:100%;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+#userPicDiv #userPic{
+    width:100%;
+    height: 200px;
+}
+#pagination-container{
+    text-align: center;
+}
+#bio{
+    float:left;
+    width: calc(100% - 300px);
+    padding: 10px;
+}
+#menu {
+    border-top: solid 6px #f00;
+    background-color: #f00;
+    color: #fff;
+    height: 400px;
+}
+#pagination div {
+    display: block;
+}
+.panel-title{
+    display: inline;
+}
+#menu a {
+    background-color: #f00;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
+#cv_lock{
+    padding-top: 20px;
+    color: black;
+    font-size: 75px;
+
+}
+.cv_lock_container{
+    height: 120px;
+    width: 100px;
+    margin: 10px;
+}
+#content {
+    background-color: #fff;
+    border-top: solid 6px #2d6ca2;
+
+}
+#pagination{
+    text-align: center;
+}
+#pagi{
+    width:calc(100% - 200px);float: left;
+}
+.lpc{
+    width:200px;
+    float: left;
+    padding-top: 20px;
+}
+.side-ad{
+    margin: 10px;
+    border:solid thin silver;
+    padding: 10px;
+}
+#content{
+    overflow: auto;
+}
+@media only screen and (min-width: 1050px)  {
+    #profile-page{
+        float: left;
+        min-width: 800px;
+    }
+
+    #placementSearchResults{
+        float: left;
+        overflow: auto;
+        width:calc(100% - 520px);
+        padding: 10px;
+    }
+    #searchMenu{
+        float: left;
+        width:210px;
+    }
+    #profile-sider{
+        width:calc(100% - 800px);
+        float: left;
+    }
+    #pwebenlancerofile-page{
+        width:800px;
+        float: left;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #profile-page{
+
+    }
+    #login-container{
+        width: 350px;
+        margin-left:auto;
+        margin-right: auto;
+        margin-top:50px;
+        margin-bottom: 50px;
+    }
+    .filterTool{
+        width:200px;
+        margin-left: 5px;
+        margin-bottom: 5px;
+    }
+    /* placements menu*/
+    .side-menu{
+        list-style: none;
+        padding:0;
+        text-align: center;
+    }
+    .side-menu li{
+        height: 40px;
+        line-height: 40px;
+        border-bottom: solid thin silver;
+        background-color: white;
+    }
+
+
+    #side-menu{
+        width:300px;
+        max-height: 500px;
+        border: solid thin silver;
+    }
+    #main-section{
+        margin-left: 300px;
+        width: calc(100% - 300px);
+    }
+    #cvs_main_container{
+    }
+    /* skills dropdown menu */
+    #catList, .dropdown-menu {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        width: 250px;
+        margin-left: 0px;
+    }
+
+    #catList, li {
+        font-size: 14px;
+     }
+
+    .dropdown-submenu {
+        position: relative;
+         font-size: 12px;
+    }
+
+    .dropdown-submenu .dropdown-menu {
+        width: 250px;
+        top: 0;
+        left: 100%;
+        margin-top: -1px;
+    }
+
+
+    /*skills dropdown menu end*/
+    .form-panel-container{
+        width:350px;
+    }
+    .prow{
+        margin: 10px;
+    }
+    .panel-container{
+        width: 400px;
+        float: left;
+        overflow: visible;
+    }
+    #page-container{
+        overflow: auto;
+        padding: 10px;
+    }
+    #profileContent{
+        overflow: auto;
+    }
+    #timeline{
+        float: left;
+        padding-left: 10px;
+        padding-top: 10px;
+        width: calc(100% - 250px);
+    }
+    #leftSide{
+        float: left;
+        width: 250px;
+        padding-top: 10px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    #login-container{
+        text-align: center;
+    }
+    .submit-button{
+        width: 100%;
+    }
+}
