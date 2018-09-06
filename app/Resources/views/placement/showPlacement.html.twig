@@ -1,0 +1,55 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="modal fade" id="applyModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Apply</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="applyMessage"></div>
+                    <fieldset>
+                        <div class="form-group">
+                            <div >
+                                <textarea class="full" id="coverLetterField"></textarea>
+                            </div>
+                        </div>
+                        <button id="viewCV" data-user="<?php echo $_SESSION['user_id']; ?>" >View CV</button>
+                    </fieldset>
+
+                </div>
+                <div class="modal-footer">
+                    <button id="applyButton" data-placement="<?php echo $_GET['id'];?>" data-user="<?php echo $_SESSION['user_id']; ?>" type="button" class="btn btn-primary">Apply</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--end modal-->
+
+    <div id="fullAdv">
+        <tbody>
+            <h3><strong>{{ placement.name }}</strong></h3>
+            <hr>
+                <p>{{ placement.description }}</p>
+            <hr>
+            <p><label>Salary :&nbsp;</label>£{{ placement.salary }}</p>
+            <p><label>Starting date : &nbsp;</label>{{ placement.startDate|date('Y-m-d') }}</p>
+            <p><label>Placement length : &nbsp; </label></p>
+            <p><label>Location : &nbsp;</label>{{ placement.location }}</p>
+            <hr>
+            <h3>Skills</h3>
+
+
+         <button type="button" data-toggle="modal" data-target="#applyModal">Apply</button>
+
+         <button id="contactEmployer">Contact Employer</button>
+
+         </tbody>
+    </div>
+
+{% endblock %}

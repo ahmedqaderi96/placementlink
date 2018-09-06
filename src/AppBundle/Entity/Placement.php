@@ -40,7 +40,7 @@ class Placement
      */
     private $employerId;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $startDate;
     /**
@@ -140,6 +140,9 @@ class Placement
     {
         $this->startDate = $startDate;
     }
+
+
+
 
     /**
      * @return mixed

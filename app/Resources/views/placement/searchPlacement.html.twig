@@ -1,0 +1,96 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <style>
+        .content{
+            background-color: unset;
+        }
+    </style>
+    <div id="searchMenu" class="container navbar navbar-form">
+        <ul class="nav navbar-nav">
+            <li>
+                <label id="SFS" class="form-control">Filter:</label>
+            </li>
+
+            <li>
+                <input type="hidden" name="searchtxtBox" value="">
+                <div id="catList" class="dropdown">
+
+                    <button class="btn btn-default dropdown-toggle" id="selectCatBtn" type="button" data-toggle="dropdown">Select Skills
+                        <span class="caret"></span>
+                    </button>
+                    <ul id="categoryies" class="dropdown-menu">
+                        {#foreach ($view->allCategories as $categoryName) {#}
+                        {% for skillCategory in skillCategorys %}
+                        {#$forignKey = $placementDataSet->getField('category_id', 'SkillCategory','category_name', $categoryName);#}
+                        {#$view->subCategories = $placementDataSet->fetchData('skillSubCategory', 'name', $forignKey);#}
+                         <li class="dropdown-submenu">
+                            <a class="test" tabindex="-1" href="#">{{ skillCategory.name }}<span class="glyphicon glyphicon-chevron-right"></span></a>
+                            <ul id="subCategories" class="dropdown-menu">
+                                {% for subCategory in subCatByCatId(skillCategory.id) %}
+                                {#foreach ($view->subCategories as $subCategoryName) {#}
+                                {#$forignKey = $placementDataSet->getField('id', 'skillSubCategory','name', $subCategoryName);#}
+                                {#$view->skill = $placementDataSet->fetchData('Skill', 'skill_name', $forignKey);#}
+                                 <li class="dropdown-submenu" margin-left="70px">
+                                    <a class="test2" tabindex="-1" href="#">{{ subCategory.name}}<span class="glyphicon glyphicon-chevron-right"></span></a>
+                                    <ul class="dropdown-menu">
+                                        {% for skill in skillBySubCatId(subCategory.id) %}
+                                        {#foreach ($view->skill as $skill) {#}
+                                         <li><a class="skillButton"><input type="checkbox" value="{{ skill.name }}" name="skills">{{ skill.name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <select id="select" name="type" class="form-control">
+                    <option value="">Any type </option>
+                    <option value="6 month placement">6 month placement</option>
+                    <option value="12 month placement">12 month placement</option>
+                </select>
+            </li>
+
+            <li>
+                <select id="select" name="location" class="form-control">
+                    <option value="">Any location </option>
+                    <option value="South East">South East</option>
+                    <option value="South West">South West </option>
+                    <option value="London">London</option>
+                    <option value="East England">East Of England </option>
+                    <option value="West Midlands">West Midlands </option>
+                    <option value="East Midlands">East Midlands </option>
+                    <option value="Yorkshire">Yorkshire and the Humber </option>
+                    <option value="North West">North West</option>
+                    <option value="North East">North East</option>
+                </select>
+            </li>
+            <li id="searchPlacementLi">
+                <button id="searchPlacement" class="btn btn-default">Search</button>
+            </li>
+        </ul>
+    </div>
+    <div id="placementSearchResults">
+    {% for placement in placements %}
+        <div class="ads">
+            <h3><a id="adsID" class="search-link" href="../placement/{{ placement.id }}">{{ placement.name }}</a></h3>
+            <p><b>Salary: </b>{{ placement.salary }}</p>
+            <p>{{ placement.description }}</p>
+        </div>
+        <hr style="border-color: #ddd;">
+        {#<li><a class="bluelink plink" data-id="{{ placement.id }}" href="placement/{{ placement.id }}">{{ placement.name }}</a></li>#}
+    {% endfor %}
+    </div>
+
+    {#<aside id="side-menu" class="pull-left">#}
+        {#<ul class="side-menu">#}
+            {#{% for placement in placements %}#}
+                {#<li><a class="bluelink plink" data-id="{{ placement.id }}" href="placement/{{ placement.id }}">{{ placement.name }}</a></li>#}
+            {#{% endfor %}#}
+        {#</ul>#}
+    {#</aside>#}
+{% endblock %}

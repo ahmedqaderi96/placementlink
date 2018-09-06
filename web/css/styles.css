@@ -15,6 +15,52 @@ Flexbox Layout
     flex: 1;
     justify-content: flex-end;
 }
+#searchMenu{
+    min-height: auto;
+    border-bottom: solid 2px #2d6ca2;
+    margin: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: white;
+
+}
+/* skills dropdown menu */
+#catList, .dropdown-menu {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin-left: 0px;
+}
+
+#catList, li {
+    font-size: 14px;
+}
+
+#placementSearchResults {
+    background-color: white;
+    width: 570px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+.dropdown-submenu {
+    position: relative;
+    font-size: 12px;
+}
+
+.dropdown-submenu .dropdown-menu {
+    width: 250px;
+    top: 0 !important;
+    left: 100% !important;
+    margin-top: -1px;
+}
+
+.ads{
+    padding: 10px;
+}
+/*skills dropdown menu end*/
+
 
 .main-content {
     min-height: 300px;
@@ -78,7 +124,7 @@ body {
 .header {
     padding: 10px 0;
     margin: 0 auto;
-    background-color: darkred;
+    background-color: #004b8c;
     color: white;
 }
 

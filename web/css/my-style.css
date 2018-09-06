@@ -230,8 +230,8 @@
 
     .dropdown-submenu .dropdown-menu {
         width: 250px;
-        top: 0;
-        left: 100%;
+        top: 0 !important;
+        left: 100% !important;
         margin-top: -1px;
     }
 

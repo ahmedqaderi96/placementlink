@@ -1,29 +1,36 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
-
+    {% block header %}
+        <style>
+            .navbar-nav li{
+                padding-left: 10px;
+            }
+        </style>
     <header class="header">
         <ul class="nav pull-left left-nav">
             <li><a href="findStudent.php">find students</a></li>
         </ul>
-        <div class="dropdown pull-right"><?php if(isset($_SESSION['user_id'])){?>
-            <a class="btn dropdown-toggle" type="button" id="menu1" data-toggle="dropdown"><?php if(isset($_SESSION["name"])) echo $_SESSION["name"]?>
+        <div class="dropdown pull-right">{% if is_granted('ROLE_USER') %}
+            <a class="btn dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">{{ app.user.username }}
                 <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="profile.php">My Profile</a></li>
-                <li><a href="details.php">Update Details</a></li>
+                <li><a href="{{ path("fos_user_profile_show") }}">My Profile</a></li>
+                <li><a href="{{ path("fos_user_profile_edit") }}">Update Details</a></li>
                 <?php if($_SESSION['userType'] ==1){?>
                 <li><a href="placements.php">My Ads</a></li>
                 <li><a href="myad.php">Manage Ads</a></li>
                 <?php }?>
                 <li role="separator" class="divider"></li>
-                <li><a href="logout.php">Logout</a></li>
+                <li><a href="{{ path("fos_user_security_logout") }}">Logout</a></li>
             </ul>
-            <?php  }else{ ?>
+            {% else %}
             <a class="btn dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Login
                 <span class="caret"></span></a>
             <div class="dropdown-menu login-dropdown">
-                <form role="form" method="post" action="login.php">
+                <form role="form" method="post" action="{{ path("fos_user_security_check") }}">
+                    {#{% if csrf_token %}#}
+                        {#<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />#}
+                    {#{% endif %}#}
                     <fieldset>
                         <div class="form-group">
                             <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="">
@@ -42,9 +49,10 @@
                 <hr/>
                 <button class="btn btn-sm btn-secondary btn-lg btn-block">Register</button>
             </div>
-            <?php }?>
+            {% endif %}
         </div>
     </header>
+    {% endblock %}
     <div class="{{ 'bg' }}" id="background">&nbsp;</div>
 
     <div style="text-align:center">
@@ -64,24 +72,31 @@
             vertical-align: middle;
 
              ">
-                <div style="display: table-cell;opacity: 1;
+                <div style="display: table-cell;opacity: 1;width: auto;
         vertical-align: middle;">
-                    <form action="searchPlacement.php" method="get">
-                        <input class="index-search" name="searchBox" type="text" placeholder="placement" />
-                        <select class="filterTool" name="location">
-                            <option value="">Any location </option>
-                            <option value="South East">South East</option>
-                            <option value="South West">South West </option>
-                            <option value="London">London</option>
-                            <option value="East England">East Of England </option>
-                            <option value="West Midlands">West Midlands </option>
-                            <option value="East Midlands">East Midlands </option>
-                            <option value="Yorkshire">Yorkshire and the Humber </option>
-                            <option value="North West">North West</option>
-                            <option value="North East">North East</option>
-                        </select>
-                        <input type="submit" class="btn btn-primary" name="searchPlacement" value="search">
-
+                    <form action="/placements" method="get">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <input class=" form-control" name="searchBox" type="text" placeholder="placement" />
+                            </li>
+                            <li>
+                                <select class="filterTool form-control" name="location">
+                                    <option value="">Any location </option>
+                                    <option value="South East">South East</option>
+                                    <option value="South West">South West </option>
+                                    <option value="London">London</option>
+                                    <option value="East England">East Of England </option>
+                                    <option value="West Midlands">West Midlands </option>
+                                    <option value="East Midlands">East Midlands </option>
+                                    <option value="Yorkshire">Yorkshire and the Humber </option>
+                                    <option value="North West">North West</option>
+                                    <option value="North East">North East</option>
+                                </select>
+                            </li>
+                            <li>
+                                <input type="submit" class="btn btn-primary form-control" name="searchPlacement" value="search">
+                            </li>
+                        </ul>
                     </form>
                 </div>
             </div>
@@ -89,7 +104,7 @@
     </div>
 
 
-
+    {% block footer %}
     <div class="copyright" style="position: fixed;bottom: 0; width:100%">
         <div class="container">
             <div class="col-md-6">
@@ -107,6 +122,7 @@
             </div>
         </div>
     </div>
+    {% endblock %}
 {% endblock %}
 
 {% block stylesheets %}
